@@ -1,0 +1,109 @@
+1. sort orders each line within the file. It seems like sort considers tabbed lines to be higher than non tabbed ones.
+    output:
+
+
+
+
+
+            //we will add the functionality of echo next within the object commandLibrary
+            break;
+            break;
+            commandLibrary.cat(userInputArray.slice(1));
+            commandLibrary.echo(userInputArray.slice(1).join(' '));
+            done(data);
+            if (err) throw err;
+          case 'cat':
+          case 'echo':
+          const fileName = fullPath[0];
+          done(userInput);
+          fs.readFile(fileName, (err, data) => {
+          });
+        'cat': function(fullPath) {
+        'echo': function(userInput) {
+        //parses the user input to understand which command was typed
+        //the cat command
+        //the echo command
+        const command = userInputArray[0];
+        const userInputArray = userInput.split(' ');
+        process.stdout.write('\nprompt > ');
+        process.stdout.write(output);
+        switch (command) {
+        }
+        }
+        },
+      //where we will store our commands
+      //where we will store the logic of our commands
+      //write out data
+      const commandLibrary = {
+      const fs = require('fs');
+      function done(output) {
+      function evaluateCmd(userInput) {
+      module.exports.commandLibrary = commandLibrary;
+      module.exports.evaluateCmd = evaluateCmd;
+      }
+      }
+      };
+
+  wc outputs the numbers of new lines, words, and characters.
+    output:       43     119    1073 commands.js
+
+  uniq sorts the lines in the file and outputs them. It only shows a line once; If the line exists twice, it only outputs once. I don't think uniq sorted the lines of command.js.
+    output:
+    const fs = require('fs');
+
+    //write out data
+    function done(output) {
+      process.stdout.write(output);
+      process.stdout.write('\nprompt > ');
+    }
+
+    //where we will store our commands
+    function evaluateCmd(userInput) {
+      //parses the user input to understand which command was typed
+      const userInputArray = userInput.split(' ');
+      const command = userInputArray[0];
+
+      switch (command) {
+        case 'echo':
+          //we will add the functionality of echo next within the object commandLibrary
+          commandLibrary.echo(userInputArray.slice(1).join(' '));
+          break;
+        case 'cat':
+          commandLibrary.cat(userInputArray.slice(1));
+          break;
+      }
+    }
+
+    //where we will store the logic of our commands
+    const commandLibrary = {
+      //the echo command
+      'echo': function(userInput) {
+        done(userInput);
+      },
+      //the cat command
+      'cat': function(fullPath) {
+        const fileName = fullPath[0];
+        fs.readFile(fileName, (err, data) => {
+          if (err) throw err;
+          done(data);
+        });
+      }
+    };
+
+    module.exports.commandLibrary = commandLibrary;
+    module.exports.evaluateCmd = evaluateCmd;
+
+2. I used cat commands.js | wc. It showed the output `43     119    1073`. This was the same thing as typing in `wc commands.js`.
+
+6.
+  function reverseString(inputString) {
+  let stringArray = inputString.split(' ');
+  let reversedString = [];
+  stringArray.forEach((word) => {
+    let reversedWord = word.split('');
+    reversedWord = reversedWord.reverse();
+    reversedWord = reversedWord.join('');
+    reversedString.push(reversedWord);
+    });
+  return reversedString.join(' ');
+  }
